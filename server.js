@@ -16,6 +16,7 @@ const PORT = 3001;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('public'));
 
 // Routes
 // =============================================================
@@ -29,7 +30,7 @@ app.get("/api/notes", function (req, res) {
 // Create new note
 app.post("/api/notes", function (req, res) {
   const newNote = req.body;
-  dbNotes[0].push(newNote);
+  dbNotes.push(newNote);
   console.log(newNote);
   console.log(dbNotes);
 
