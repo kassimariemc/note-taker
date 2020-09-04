@@ -22,8 +22,15 @@ app.use(express.static('public'));
 // =============================================================
 
 // API Routes
+// Function to set ids for each note
+const setIds = () => {
+  for (let i = 0; i < dbNotes.length; i++) {
+    dbNotes[i].id = i;
+  }
+}
 // Displays all notes in JSON
 app.get("/api/notes", function (req, res) {
+  setIds();
   return res.json(dbNotes);
 });
 
@@ -31,14 +38,23 @@ app.get("/api/notes", function (req, res) {
 app.post("/api/notes", function (req, res) {
   const newNote = req.body;
   dbNotes.push(newNote);
-  console.log(newNote);
-  console.log(dbNotes);
+
+  setIds();
 
   fs.writeFileSync(path.resolve(dbDir, "db.json"), JSON.stringify(dbNotes), 'utf-8');
   res.json(newNote);
 });
 
 // Delete note by id
+app.delete("/api/notes/:id", function (req, res) {
+  let idtoDelete = req.params.id;
+
+  setIds();
+  dbNotes.splice(idtoDelete, 1);
+
+  fs.writeFileSync(path.resolve(dbDir, "db.json"), JSON.stringify(dbNotes), 'utf-8');
+  res.json(dbNotes);
+})
 
 // HTML Routes
 app.get("/notes", function (req, res) {
