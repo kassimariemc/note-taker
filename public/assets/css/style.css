@@ -1,9 +1,26 @@
+/* Both pages */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: 'Long Cang', cursive;
+  font-size: larger;
+  background-image: url(../images/bckgrnd.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
+a {
+  font-size: 36px !important;
+}
+
+/* Index page */
+.jumbotron {
+  background-color: #2A9D8F;
+  color: #353434;
+}
+
+/* Notes page */
 .save-note {
   display: none;
 }
@@ -15,34 +32,44 @@ html, body {
   cursor: pointer;
 }
 
+.save-note:hover, .new-note:hover {
+  color: #2A9D8F !important;
+}
+
 .note-textarea, .note-title {
-  color: #000000;
+  color: #353434;
   width: 100%;
   outline: none;
   border: none;
+  background-color: transparent;
 }
 
 .note-textarea {
   resize: none;
   height: calc(100% - 63px);
   padding-top: 15px;
+  font-size: 30px;
 }
 
 .note-title {
-  height: 50px;
+  height: 60px;
   margin-top: 13px;
   font-size: 3rem;
+  text-decoration: underline;
+  text-decoration-color: #757575;
 }
 
 .note-title:read-only, .note-textarea:read-only {
   color: #757575;
 }
 
+/* Notes list */
 .list-container .card {
   height: calc(100vh - 70px);
   border-bottom: none;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  background-color: #E9C46A;
 }
 
 .list-container {
@@ -67,4 +94,9 @@ html, body {
   border-right: none;
   padding: 20px;
   cursor: pointer;
+  background-color: #E9C46A;
+}
+
+.delete-note {
+  color: #E76F51 !important;
 }
